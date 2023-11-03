@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HalalFlix</title>
+        <style>
+            /* Center the form */
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            /* Add a banner at the top */
+            header {
+                background-color: #f8f9fa;
+                text-align: center;
+                padding: 20px;
+                margin-bottom: 20px;
+                font-size: 2em;
+                color: #333;
+                border-bottom: 5px solid #f1c40f;
+                font-family: 'Amiri', serif; /* Set the font-family to Amiri */
+            }
+
+            /* Add some color to the form */
+            body {
+                background-color: #f1c40f;
+            }
+
+            form {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+
+            label {
+                color: #333;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+            input[type="text"] {
+                padding: 10px;
+                border-radius: 5px;
+                border: 2px solid #686144; /* Add a 2px solid border with the color of your choice */
+                margin-bottom: 20px;
+                font-size: 1.2em;
+            }
+
+            button[type="submit"] {
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.2em;
+                cursor: pointer;
+            }
+
+            button[type="submit"]:hover {
+                background-color: #f1c40f;
+                color: #333;
+            }
+            #moviePoster {
+                width: 40vh;
+                margin-top: 20px;
+                border-radius: 20px;
+                box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); /* Add a box shadow to the image */
+            }
+
+
+        </style>
+                </head>
+                <body>
+                    <header>HalalFlix</header>
+                    <form action="/check" method="POST">
+                        <h2 style="color: #333;">What movie do you wish to check?</h2>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="year">Year:</label>
+                        <input type="text" id="year" name="year" required>
+                        <button type="submit">Submit</button>
+                        <img id="moviePoster" src="<%= locals.posterLink %>" alt="Movie Poster">
+                    </form>
+                    
+                </body>            
+            </html>
+
