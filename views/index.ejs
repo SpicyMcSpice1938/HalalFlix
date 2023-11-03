@@ -83,7 +83,10 @@
                         <label for="year">Year:</label>
                         <input type="text" id="year" name="year" required>
                         <button type="submit">Submit</button>
-                        <img id="moviePoster" src="<%= locals.posterLink %>" alt="Movie Poster">
+                        
+                        <% if (locals.posterLink) { %>
+                            <img id="moviePoster" src="<%= locals.posterLink %>" alt="Movie Poster">
+                        <% } %>
                     </form>
                     
                 </body>            
