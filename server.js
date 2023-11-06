@@ -19,7 +19,6 @@ app.get("/", (req, res) => {
 app.post('/check', async (req, res) => {
     movieData = await tmdbreq(req.body.name, req.body.year)
     movieData.pg = await pgScrape(movieData.pgLink)
-    console.log(movieData.pg)
     console.log('movie data is', movieData);
     res.render("index.ejs", movieData);
 });
@@ -81,6 +80,8 @@ async function pgScrape(link){
     const res = await fetch(link);
     const html = await res.text();
     const $ = cheerio.load(html);
+
+
     nuditySection = $('#advisory-nudity')
     mess = nuditySection.find('.advisory-severity-vote__message').parent().find('span').text()
     if (mess.includes('None')){
@@ -92,6 +93,58 @@ async function pgScrape(link){
     } else if (mess.includes('Severe')){
         pgData.advisoryNudity = 'Severe'
     }
+
+
+    violenceSection = $('#advisory-violence')
+    mess = violenceSection.find('.advisory-severity-vote__message').parent().find('span').text()
+    if (mess.includes('None')){
+        pgData.advisoryViolence = 'None'
+    } else if (mess.includes('Mild')){
+        pgData.advisoryViolence = 'Mild'
+    } else if (mess.includes('Moderate')){ 
+        pgData.advisoryViolence = 'Moderate'
+    } else if (mess.includes('Severe')){
+        pgData.advisoryViolence = 'Severe'
+    }
+
+    profanitySection = $('#advisory-profanity')
+    mess = profanitySection.find('.advisory-severity-vote__message').parent().find('span').text()
+    if (mess.includes('None')){
+        pgData.advisoryProfanity = 'None'
+    } else if (mess.includes('Mild')){
+        pgData.advisoryProfanity = 'Mild'
+    } else if (mess.includes('Moderate')){ 
+        pgData.advisoryProfanity = 'Moderate'
+    } else if (mess.includes('Severe')){
+        pgData.advisoryProfanity = 'Severe'
+    }
+
+    alcoholSection = $('#advisory-alcohol')
+    mess = alcoholSection.find('.advisory-severity-vote__message').parent().find('span').text()
+    if (mess.includes('None')){
+        pgData.advisoryAlcohol = 'None'
+    } else if (mess.includes('Mild')){
+        pgData.advisoryAlcohol = 'Mild'
+    } else if (mess.includes('Moderate')){ 
+        pgData.advisoryAlcohol = 'Moderate'
+    } else if (mess.includes('Severe')){
+        pgData.advisoryAlcohol = 'Severe'
+    }
+
+    frighteningSection = $('#advisory-frightening')
+    mess = frighteningSection.find('.advisory-severity-vote__message').parent().find('span').text()
+    if (mess.includes('None')){
+        pgData.advisoryFrightening = 'None'
+    } else if (mess.includes('Mild')){
+        pgData.advisoryFrightening = 'Mild'
+    } else if (mess.includes('Moderate')){ 
+        pgData.advisoryFrightening = 'Moderate'
+    } else if (mess.includes('Severe')){
+        pgData.advisoryFrightening = 'Severe'
+    }
+    
+
+
 
     return pgData;
 }
