@@ -1,5 +1,5 @@
 # HalalFlix
-to check if a movie is halal or not
+To check if a movie is halal or not. Kind of a not-so-secret inside joke among muslims. 'Halal' means permissable by God, so you are evaluating if a movie is permissable by God.
 
 To use locally, create a .env with your own TMDB API Read Access token saved to ACCESSTOKEN. go to localhost:3000 to use.
 
