@@ -1,9 +1,10 @@
 const fetch = require('node-fetch')
 const express = require("express")
 const cheerio = require('cheerio');
-const axios = require('axios');
-const pretty = require("pretty");
+
 require('dotenv').config()
+
+
 const app = express()
 
 app.use(express.static("public"))

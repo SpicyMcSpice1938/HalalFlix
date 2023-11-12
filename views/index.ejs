@@ -9,7 +9,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
+                height: 150vh;
             }
 
             /* Add a banner at the top */
@@ -87,6 +87,13 @@
                         
                         <% if (locals.posterLink) { %>
                             <img id="moviePoster" src="<%= locals.posterLink %>" alt="Movie Poster">
+                        <% } %>
+                        <% if (locals.pg) { %>
+                            <h2>Nudity: <%=pg.advisoryNudity%></h2>
+                            <h2>Violence: <%=pg.advisoryViolence%></h2>
+                            <h2>Profanity: <%=pg.advisoryProfanity%></h2>
+                            <h2>Alcohol: <%=pg.advisoryAlcohol%></h2>
+                            <h2>Frightening Imagery: <%=pg.advisoryFrightening%></h2>
                         <% } %>
                     </form>
                     
